@@ -632,6 +632,23 @@
                 height: 90vh;
             }
         }
+        /* Logo styles */
+.logo-img {
+    height: 50px; /* Ajuste conforme necessário */
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+    transform: scale(1.05);
+}
+
+/* Ajuste para telas menores */
+@media (max-width: 768px) {
+    .logo-img {
+        height: 40px;
+    }
+}
     </style>
 </head>
 <body>
