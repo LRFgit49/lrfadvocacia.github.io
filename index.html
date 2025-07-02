@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LRF - Escritório de Advocacia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* variáveis de cores atualizadas */
+        :root {
+            --primary: #121212; 
+            --secondary: #c9a145;
+            --tertiary: #1e1e1e; 
+            --light: #f0f0f0; 
+            --dark: #121212; 
+            --gray: #a0a0a0;
+        }
+
+        /* testando uns bagulho aí*/
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--primary);
+            color: var(--light);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: var(--primary);
+            padding: 12px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(201, 161, 69, 0.3);
+        }
+
+        .btn:hover {
+            background: #d4b04d;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(201, 161, 69, 0.4);
+        }
+
+        .btn-lg {
+            padding: 15px 40px;
+            font-size: 1.1rem;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--light);
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 20px auto 0;
+        }
+
+        /* header */
+        header {
+            background-color: #000;
+            box-shadow: 0 2px 10px rgba(201, 161, 69, 0.4);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(201, 161, 69, 0.2);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo h1 {
+            color: var(--light);
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--light);
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 1.1rem;
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s;
+        }
+
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+
+        .contact-header {
+            display: flex;
+            align-items: center;
+            background: var(--secondary);
+            padding: 8px 20px;
+            border-radius: 30px;
+            transition: all 0.3s;
+        }
+
+        .contact-header:hover {
+            background: #d4b04d;
+            transform: scale(1.05);
+        }
+
+        .contact-header a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-header i {
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--light);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url('C:/Users/Administrativo/OneDrive/Documentos/GitHub/sitelrf/imagens/sitti.jpeg') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            color: var(--light);
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            color: var(--gray);
+        }
+
+        .highlight {
+            color: var(--secondary);
+            font-weight: 700;
+        }
+
+        .phone-number {
+            font-size: 2.5rem;
+            margin: 30px 0;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: block;
+            color: var(--secondary);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+        }
+
+        .phone-number:hover {
+            transform: scale(1.05);
+        }
+
+        /* serviços */
+        .services {
+            background-color: var(--tertiary);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: #1a1a1a;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(201, 161, 69, 0.2);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(201, 161, 69, 0.2);
+            border: 1px solid rgba(201, 161, 69, 0.4);
+        }
+
+        .service-icon {
+            background: var(--secondary);
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--primary);
+        }
+
+        .service-content {
+            padding: 30px;
+        }
+
+        .service-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+
+        .service-content p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        .service-content ul {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .service-content ul li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+            color: var(--light);
+        }
+
+        .service-content ul li:before {
+            content: "\f00c";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: var(--secondary);
+        }
+
+        /* sobre */
+        .about {
+            background-color: var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(201,161,69,0.1) 0%, rgba(18,18,18,0) 70%);
+            pointer-events: none;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-text h2 {
+            color: var(--secondary);
+            font-size: 2.3rem;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: var(--light);
+        }
+
+        .about-image {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+            border: 2px solid var(--secondary);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Contato */
+        .contact {
+            background: linear-gradient(to right, #000, var(--tertiary));
+            color: var(--light);
+            text-align: center;
+            position: relative;
+        }
+
+        .contact:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1506784983877-45594efa4cbe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1768&q=80') no-repeat center center/cover;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .contact .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact h2 {
+            color: var(--light);
+        }
+
+        .contact h2:after {
+            background: var(--secondary);
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 300px;
+            background: rgba(30, 30, 30, 0.7);
+            padding: 30px 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(201, 161, 69, 0.3);
+            transition: all 0.3s;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(201, 161, 69, 0.2);
+            border: 1px solid var(--secondary);
+        }
+
+        .contact-icon {
+            background: var(--secondary);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .contact-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+
+        .contact-item p {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--light);
+        }
+
+        .contact-item a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.4rem;
+            margin-top: 10px;
+            transition: color 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: #d4b04d;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            color: var(--light);
+            padding: 40px 0 20px;
+            border-top: 1px solid rgba(201, 161, 69, 0.2);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h3 {
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .footer-column p, .footer-column a {
+            color: var(--gray);
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: var(--secondary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(201, 161, 69, 0.1);
+            border-radius: 50%;
+            color: var(--secondary);
+            transition: all 0.3s;
+            border: 1px solid rgba(201, 161, 69, 0.3);
+        }
+
+        .social-links a:hover {
+            background: var(--secondary);
+            color: var(--primary);
+            transform: translateY(-3px);
+            border-color: var(--secondary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(201, 161, 69, 0.1);
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* efeitos de brilho e detalhes */
+        .gold-glow {
+            text-shadow: 0 0 10px rgba(201, 161, 69, 0.5);
+        }
+
+        .gold-border {
+            border: 1px solid rgba(201, 161, 69, 0.3);
+        }
+
+        /* responsividade */
+        @media (max-width: 992px) {
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .phone-number {
+                font-size: 2rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: #000;
+                padding: 20px 0;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.3);
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.3rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            
+            .phone-number {
+                font-size: 1.6rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section {
+                padding: 60px 0;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero {
+                height: 90vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <h1>LRF <span class="gold-glow">Advocacia e Consultoria</span></h1>
+            </div>
+            
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#sobre">Sobre Nós</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                    <li>
+                        <div class="contact-header">
+                            <a href="tel:+5531982373540">
+                                <i class="fas fa-phone"></i> (31) 98237-3540
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h1>Soluções Jurídicas <span class="highlight">Eficientes</span> para Você</h1>
+            <p>Defendemos seus direitos com excelência e compromisso. A primeira consulta no escritório é <span class="highlight">totalmente gratuita.</span></p>
+        <div class="about-text">Consulta gratuita com duração limitada - (30 min)
+        </div>
+        <div class="container hero-content"><p>Conte com nossa experiência para resolver suas questões jurídicas.</p></div>
+            
+            <a href="tel:+5531982373540" class="phone-number gold-glow">
+                <i class="fas fa-phone"></i> (31) 98237-3540
+            </a>
+            
+            <a href="#contato" class="btn btn-lg">Fale Conosco Agora</a>
+
+            <p></p>
+        </div>
+    </section>
+
+    <!-- serviços --> 
+<section id="servicos" class="section services">
+    <div class="container">
+        <div class="section-title">
+            <h2>Nossos Serviços</h2>
+            <p>Oferecemos soluções jurídicas completas para pessoas físicas e empresas</p>
+        </div>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-balance-scale"></i>
+                </div>
+                <div class="service-content">
+                    <h3>Direito Civil</h3>
+                    <p>Atuação em questões relacionadas a contratos, propriedade, família e responsabilidade civil.</p>
+                    <ul>
+                        <li>Contratos em geral</li>
+                        <li>Responsabilidade Civil</li>
+                        <li>Juros abusivos</li>
+                        <li>DPVAT</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-university"></i>
+                </div>
+                <div class="service-content">
+                    <h3>Direito Previdenciário</h3>
+                    <p>Atuação na concessão e revisão de benefícios do INSS e planejamento de aposentadoria.</p>
+                    <ul>
+                        <li>Aposentadoria por tempo de contribuição</li>
+                        <li>BPC - LOAS</li>
+                        <li>Pensão por morte</li>
+                        <li>Auxílio-doença e outros benefícios</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <div class="service-content">
+                    <h3>Direito Trabalhista</h3>
+                    <p>Defesa dos direitos dos trabalhadores e assessoria jurídica para empresas.</p>
+                    <ul>
+                        <li>Reclamações Trabalhistas</li>
+                        <li>Defesas em processos</li>
+                        <li>Consultoria preventiva</li>
+                        <li>Acordos e negociações</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-gavel"></i>
+                </div>
+                <div class="service-content">
+                    <h3>Direito Criminal</h3>
+                    <p>Atuação em defesa criminal, inquéritos policiais e ações penais.</p>
+                    <ul>
+                        <li>Defesa em ações penais</li>
+                        <li>Acompanhamento de inquéritos</li>
+                        <li>Tribunal do Júri</li>
+                        <li>Crimes contra o patrimônio e a pessoa</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div class="service-content">
+                    <h3>Direito de Família</h3>
+                    <p>Atuação em conflitos familiares com sensibilidade e foco na resolução pacífica.</p>
+                    <ul>
+                        <li>Divórcios</li>
+                        <li>Guarda e pensão alimentícia</li>
+                        <li>Reconhecimento e dissolução de união estável</li>
+                        <li>Inventários e partilhas</li>
+                        <li>Testamento Judicial/Extrajudicial</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class=" service-card">
+                <div class= "service-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <div class="service-content">
+                    <h3>Direito do Consumidor</h3>
+                    <p>Atuação em defesa dos direitos do consumidor em relações de consumo.</p>
+                    <ul>
+                        <li>Cobranças indevidas</li>
+                        <li>Problemas com produtos e serviços</li>
+                        <li>Ações contra instituições financeiras</li>
+                        <li>Contratos abusivos</li>
+                    </ul>        
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- sobre -->
+    <section id="sobre" class="section about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Sobre Nossa Empresa</h2>
+                <p>Mais de 8 anos de experiência oferecendo soluções jurídicas de excelência</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Compromisso com a Excelência Jurídica</h2>
+                    <p>O escritório LRF - Advocacia e Consultoria foi fundado em 2016 com o objetivo de oferecer soluções jurídicas personalizadas e eficientes para nossos clientes.</p>
+                    <p>Nossa equipe é formada por advogados especializados em diversas áreas do direito, o que nos permite oferecer um atendimento completo e multidisciplinar.</p>
+                    <p>Acreditamos na construção de relações duradouras baseadas na confiança, transparência e resultados. Nossa prioridade é entender profundamente as necessidades de cada cliente para oferecer as melhores estratégias jurídicas.</p>
+                    <a href="#contato" class="btn">Entre em Contato</a>
+                </div>
+                
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1589391886645-d51941baf7fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Equipe do escritório de advocacia">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section id="contato" class="section contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Entre em Contato</h2>
+                <p>Estamos à disposição para atendê-lo e oferecer a melhor solução para seu caso</p>
+            </div>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>Telefone</h3>
+                    <p>Atendimento 9:30 ás 16:30 </p>
+                    <p> De segunda a sexta.</p>
+                    <a href="tel:+5531982373540">(31) 98237-3540</a>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email</h3>
+                    <p>Respondemos em até 24 horas</p>
+                    <a href="mailto:gleconsultoriajuridica@gmail.com">escritoriolrf@gmail.com</a>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Endereço</h3>
+                    <p>Rua dos Caetés, 530 - Centro, 8°andar - Sala: 806</p>
+                    <p>Belo Horizonte - MG</p>
+                </div>
+            </div>
+            
+            <a href="tel:+5531982373540" class="btn btn-lg">
+                <i class="fas fa-phone"></i> Ligue Agora
+            </a>
+        </div>
+    </section>
+
+    <!-- footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>LRF - Advocacia e Consultoria</h3>
+                    <p>Oferecendo soluções jurídicas de excelência há mais de 8 anos. Compromisso com a ética, transparência e resultados.</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/escritoriolrf/"><i class="fab fa-instagram"></i></a>
+                        <a href="https://api.whatsapp.com/message/DWABEASMPZKCA1?autoload=1&app_absent=0"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Áreas de Atuação</h3>
+                    <a href="#servicos">Direito Civil</a>
+                    <a href="#servicos">Direito Trabalhista</a>
+                    <a href="#servicos">Direito Empresarial</a>
+                    <a href="#servicos">Direito de Família</a>
+                    <a href="#servicos">Direito do Consumidor</a>
+                    <a href="#servicos">Direito do Previdenciário</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contato</h3>
+                    <p><i class="fas fa-phone"></i> (31) 93646-8715</p>
+                    <p><i class="fas fa-envelope"></i> escritoriolrf@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Rua dos Caetés, 530 - Centro, 8°andar - Sala: 806</p>
+                    <p><i class="fas fa-clock"></i> Seg-Sex: 9h30-16h30 </p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 LRF - Advocacia e Consultoria - Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // efeito de scroll suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // fechar menu mobile após clicar em um link
+                if (window.innerWidth <= 768) {
+                    document.getElementById('main-nav').classList.remove('active');
+                }
+            });
+        });
+
+        // botão de menu mobile
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const nav = document.getElementById('main-nav');
+            nav.classList.toggle('active');
+        });
+
+        // atualização dinâmica do ano no footer
+        document.querySelector('.copyright p').innerHTML = `&copy; ${new Date().getFullYear()} LRF - Advocacia e Consultoria - Todos os direitos reservados`;
+
+        // efeito de fade-in nas seções
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.section, .service-card, .about-content, .contact-item').forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
