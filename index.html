@@ -16,7 +16,7 @@
             --gray: #a0a0a0;
         }
 
-        /* testando uns bagulho aí*/
+        /* Reset e estilos gerais */
         * {
             margin: 0;
             padding: 0;
@@ -28,6 +28,7 @@
             background-color: var(--primary);
             color: var(--light);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .container {
@@ -98,7 +99,7 @@
             margin: 20px auto 0;
         }
 
-        /* header */
+        /* Header */
         header {
             background-color: #000;
             box-shadow: 0 2px 10px rgba(201, 161, 69, 0.4);
@@ -113,22 +114,46 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0;
+            padding: 15px 0;
         }
 
+        /* Logo estilizada */
         .logo {
             display: flex;
             align-items: center;
+            gap: 10px;
         }
 
-        .logo h1 {
+        .logo-icon {
+            background: var(--secondary);
+            color: var(--primary);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            box-shadow: 0 0 15px rgba(201, 161, 69, 0.5);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text h1 {
             color: var(--light);
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 700;
+            line-height: 1.2;
         }
 
-        .logo span {
+        .logo-text span {
             color: var(--secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
         }
 
         nav ul {
@@ -137,7 +162,7 @@
         }
 
         nav ul li {
-            margin-left: 30px;
+            margin-left: 25px;
         }
 
         nav ul li a {
@@ -145,7 +170,7 @@
             color: var(--light);
             font-weight: 500;
             transition: color 0.3s;
-            font-size: 1.1rem;
+            font-size: 1rem;
             position: relative;
         }
 
@@ -210,23 +235,26 @@
             align-items: center;
             color: var(--light);
             text-align: center;
+            position: relative;
         }
 
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
+            position: relative;
+            z-index: 1;
         }
 
         .hero-content h1 {
-            font-size: 3.5rem;
+            font-size: 3.2rem;
             margin-bottom: 20px;
             line-height: 1.2;
             text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
 
         .hero-content p {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             margin-bottom: 30px;
             max-width: 700px;
             margin-left: auto;
@@ -239,9 +267,20 @@
             font-weight: 700;
         }
 
+        .consult-label {
+            display: inline-block;
+            background: rgba(201, 161, 69, 0.2);
+            color: var(--secondary);
+            padding: 8px 15px;
+            border-radius: 20px;
+            margin: 10px 0;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
         .phone-number {
-            font-size: 2.5rem;
-            margin: 30px 0;
+            font-size: 2.2rem;
+            margin: 25px 0;
             font-weight: 700;
             letter-spacing: 1px;
             display: block;
@@ -254,7 +293,7 @@
             transform: scale(1.05);
         }
 
-        /* serviços */
+        /* Serviços */
         .services {
             background-color: var(--tertiary);
         }
@@ -272,6 +311,9 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             border: 1px solid rgba(201, 161, 69, 0.2);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         .service-card:hover {
@@ -291,30 +333,35 @@
         }
 
         .service-content {
-            padding: 30px;
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .service-content h3 {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             margin-bottom: 15px;
             color: var(--secondary);
         }
 
         .service-content p {
             color: var(--gray);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+            flex-grow: 1;
         }
 
         .service-content ul {
             list-style: none;
-            margin: 20px 0;
+            margin: 15px 0 0;
         }
 
         .service-content ul li {
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             position: relative;
             padding-left: 25px;
             color: var(--light);
+            font-size: 0.95rem;
         }
 
         .service-content ul li:before {
@@ -325,9 +372,10 @@
             left: 0;
             top: 2px;
             color: var(--secondary);
+            font-size: 0.9rem;
         }
 
-        /* sobre */
+        /* Sobre */
         .about {
             background-color: var(--primary);
             position: relative;
@@ -356,12 +404,12 @@
 
         .about-text h2 {
             color: var(--secondary);
-            font-size: 2.3rem;
+            font-size: 2.1rem;
             margin-bottom: 20px;
         }
 
         .about-text p {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             font-size: 1.1rem;
             color: var(--light);
         }
@@ -371,12 +419,20 @@
             overflow: hidden;
             box-shadow: 0 15px 30px rgba(0,0,0,0.4);
             border: 2px solid var(--secondary);
+            height: 100%;
+            display: flex;
+            align-items: center;
         }
 
         .about-image img {
             width: 100%;
             height: auto;
             display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
         }
 
         /* Contato */
@@ -416,7 +472,7 @@
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 40px;
+            gap: 30px;
             margin-bottom: 50px;
         }
 
@@ -426,10 +482,12 @@
             align-items: center;
             max-width: 300px;
             background: rgba(30, 30, 30, 0.7);
-            padding: 30px 20px;
+            padding: 25px 20px;
             border-radius: 10px;
             border: 1px solid rgba(201, 161, 69, 0.3);
             transition: all 0.3s;
+            flex: 1;
+            min-width: 250px;
         }
 
         .contact-item:hover {
@@ -452,13 +510,13 @@
         }
 
         .contact-item h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
+            font-size: 1.4rem;
+            margin-bottom: 12px;
             color: var(--secondary);
         }
 
         .contact-item p {
-            font-size: 1.1rem;
+            font-size: 1rem;
             margin-bottom: 5px;
             color: var(--light);
         }
@@ -467,7 +525,7 @@
             color: var(--secondary);
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             margin-top: 10px;
             transition: color 0.3s;
         }
@@ -504,6 +562,7 @@
             display: block;
             text-decoration: none;
             transition: color 0.3s;
+            font-size: 0.95rem;
         }
 
         .footer-column a:hover {
@@ -544,7 +603,7 @@
             font-size: 0.9rem;
         }
 
-        /* efeitos de brilho e detalhes */
+        /* Efeitos de brilho e detalhes */
         .gold-glow {
             text-shadow: 0 0 10px rgba(201, 161, 69, 0.5);
         }
@@ -553,7 +612,7 @@
             border: 1px solid rgba(201, 161, 69, 0.3);
         }
 
-        /* responsividade */
+        /* Responsividade */
         @media (max-width: 992px) {
             .hero-content h1 {
                 font-size: 2.8rem;
@@ -565,10 +624,17 @@
             
             .about-content {
                 grid-template-columns: 1fr;
+                gap: 30px;
             }
             
             .about-image {
                 order: -1;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
             }
         }
 
@@ -594,7 +660,7 @@
             }
             
             nav ul li {
-                margin: 10px 0;
+                margin: 15px 0;
             }
             
             .mobile-menu-btn {
@@ -616,6 +682,14 @@
             .section-title h2 {
                 font-size: 2rem;
             }
+            
+            .header-container {
+                padding: 10px 0;
+            }
+            
+            .contact-info {
+                gap: 20px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -629,17 +703,55 @@
             }
             
             .hero {
-                height: 90vh;
+                height: auto;
+                min-height: 100vh;
+                padding: 100px 0 60px;
+            }
+            
+            .logo-text h1 {
+                font-size: 1.3rem;
+            }
+            
+            .logo-text span {
+                font-size: 0.8rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title p {
+                font-size: 1rem;
+            }
+            
+            .about-content {
+                gap: 20px;
+            }
+            
+            .about-text h2 {
+                font-size: 1.8rem;
+            }
+            
+            .service-content h3 {
+                font-size: 1.3rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- header -->
+    <!-- Header -->
     <header>
         <div class="container header-container">
             <div class="logo">
-                <h1>LRF <span class="gold-glow">Advocacia</span></h1>
+                <div class="logo-icon">LRF</div>
+                <div class="logo-text">
+                    <h1>LRF Advocacia</h1>
+                    <span>e consultoria</span>
+                </div>
             </div>
             
             <nav id="main-nav">
@@ -664,129 +776,132 @@
         </div>
     </header>
 
-    <!-- hero Section -->
+    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container hero-content">
             <h1>Soluções Jurídicas <span class="highlight">Eficientes</span> para Você</h1>
-            <p>Defendemos seus direitos com excelência e compromisso. A primeira consulta no escritório é <span class="highlight">totalmente gratuita.</span> Conte com nossa experiência para resolver suas questões jurídicas.</p>
-            <p>Consulta gratuita com duração limitada - (30min)</p>
+            <p>Defendemos seus direitos com excelência e compromisso. A primeira consulta no escritório é <span class="highlight">totalmente gratuita.</span></p>
+            <div class="consult-label">Consulta gratuita com duração limitada (30min)</div>
+            <p>Conte com nossa experiência para resolver suas questões jurídicas.</p>
+            
             <a href="https://wa.me/553182373540" class="phone-number gold-glow">
                 <i class="fab fa-whatsapp"></i> (31) 98237-3540
             </a>
+            
             <a href="#contato" class="btn btn-lg">Fale Conosco Agora</a>
         </div>
     </section>
 
-    <!-- serviços --> 
-<section id="servicos" class="section services">
-    <div class="container">
-        <div class="section-title">
-            <h2>Nossos Serviços</h2>
-            <p>Oferecemos soluções jurídicas completas para pessoas físicas e empresas</p>
-        </div>
-        
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-balance-scale"></i>
-                </div>
-                <div class="service-content">
-                    <h3>Direito Civil</h3>
-                    <p>Atuação em questões relacionadas a contratos, propriedade, família e responsabilidade civil.</p>
-                    <ul>
-                        <li>Contratos em geral</li>
-                        <li>Responsabilidade Civil</li>
-                        <li>Juros abusivos</li>
-                        <li>DPVAT</li>
-                    </ul>
-                </div>
+    <!-- Serviços --> 
+    <section id="servicos" class="section services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossos Serviços</h2>
+                <p>Oferecemos soluções jurídicas completas para pessoas físicas e empresas</p>
             </div>
             
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-university"></i>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Direito Civil</h3>
+                        <p>Atuação em questões relacionadas a contratos, propriedade, família e responsabilidade civil.</p>
+                        <ul>
+                            <li>Contratos em geral</li>
+                            <li>Responsabilidade Civil</li>
+                            <li>Juros abusivos</li>
+                            <li>DPVAT</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="service-content">
-                    <h3>Direito Previdenciário</h3>
-                    <p>Atuação na concessão e revisão de benefícios do INSS e planejamento de aposentadoria.</p>
-                    <ul>
-                        <li>Aposentadoria por tempo de contribuição</li>
-                        <li>BPC - LOAS</li>
-                        <li>Pensão por morte</li>
-                        <li>Auxílio-doença e outros benefícios</li>
-                    </ul>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Direito Previdenciário</h3>
+                        <p>Atuação na concessão e revisão de benefícios do INSS e planejamento de aposentadoria.</p>
+                        <ul>
+                            <li>Aposentadoria por tempo de contribuição</li>
+                            <li>BPC - LOAS</li>
+                            <li>Pensão por morte</li>
+                            <li>Auxílio-doença e outros benefícios</li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
 
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-briefcase"></i>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Direito Trabalhista</h3>
+                        <p>Defesa dos direitos dos trabalhadores e assessoria jurídica para empresas.</p>
+                        <ul>
+                            <li>Reclamações Trabalhistas</li>
+                            <li>Defesas em processos</li>
+                            <li>Consultoria preventiva</li>
+                            <li>Acordos e negociações</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="service-content">
-                    <h3>Direito Trabalhista</h3>
-                    <p>Defesa dos direitos dos trabalhadores e assessoria jurídica para empresas.</p>
-                    <ul>
-                        <li>Reclamações Trabalhistas</li>
-                        <li>Defesas em processos</li>
-                        <li>Consultoria preventiva</li>
-                        <li>Acordos e negociações</li>
-                    </ul>
-                </div>
-            </div>
 
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-gavel"></i>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-gavel"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Direito Criminal</h3>
+                        <p>Atuação em defesa criminal, inquéritos policiais e ações penais.</p>
+                        <ul>
+                            <li>Defesa em ações penais</li>
+                            <li>Acompanhamento de inquéritos</li>
+                            <li>Tribunal do Júri</li>
+                            <li>Crimes contra o patrimônio e a pessoa</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="service-content">
-                    <h3>Direito Criminal</h3>
-                    <p>Atuação em defesa criminal, inquéritos policiais e ações penais.</p>
-                    <ul>
-                        <li>Defesa em ações penais</li>
-                        <li>Acompanhamento de inquéritos</li>
-                        <li>Tribunal do Júri</li>
-                        <li>Crimes contra o patrimônio e a pessoa</li>
-                    </ul>
-                </div>
-            </div>
 
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-heart"></i>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Direito de Família</h3>
+                        <p>Atuação em conflitos familiares com sensibilidade e foco na resolução pacífica.</p>
+                        <ul>
+                            <li>Divórcios</li>
+                            <li>Guarda e pensão alimentícia</li>
+                            <li>Reconhecimento e dissolução de união estável</li>
+                            <li>Inventários e partilhas</li>
+                            <li>Testamento Judicial/Extrajudicial</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="service-content">
-                    <h3>Direito de Família</h3>
-                    <p>Atuação em conflitos familiares com sensibilidade e foco na resolução pacífica.</p>
-                    <ul>
-                        <li>Divórcios</li>
-                        <li>Guarda e pensão alimentícia</li>
-                        <li>Reconhecimento e dissolução de união estável</li>
-                        <li>Inventários e partilhas</li>
-                        <li>Testamento Judicial/Extrajudicial</li>
-                    </ul>
-                </div>
-            </div>
 
-            <div class=" service-card">
-                <div class= "service-icon">
-                    <i class="fas fa-shopping-cart"></i>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Direito do Consumidor</h3>
+                        <p>Atuação em defesa dos direitos do consumidor em relações de consumo.</p>
+                        <ul>
+                            <li>Cobranças indevidas</li>
+                            <li>Problemas com produtos e serviços</li>
+                            <li>Ações contra instituições financeiras</li>
+                            <li>Contratos abusivos</li>
+                        </ul>        
+                    </div>
                 </div>
-                <div class="service-content">
-                    <h3>Direito do Consumidor</h3>
-                    <p>Atuação em defesa dos direitos do consumidor em relações de consumo.</p>
-                    <ul>
-                        <li>Cobranças indevidas</li>
-                        <li>Problemas com produtos e serviços</li>
-                        <li>Ações contra instituições financeiras</li>
-                        <li>Contratos abusivos</li>
-                    </ul>        
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-
-    <!-- sobre -->
+    <!-- Sobre -->
     <section id="sobre" class="section about">
         <div class="container">
             <div class="section-title">
@@ -854,7 +969,7 @@
         </div>
     </section>
 
-    <!-- footer -->
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -893,7 +1008,7 @@
     </footer>
 
     <script>
-        // efeito de scroll suave
+        // Efeito de scroll suave
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -901,23 +1016,23 @@
                     behavior: 'smooth'
                 });
                 
-                // fechar menu mobile após clicar em um link
+                // Fechar menu mobile após clicar em um link
                 if (window.innerWidth <= 768) {
                     document.getElementById('main-nav').classList.remove('active');
                 }
             });
         });
 
-        // botão de menu mobile
+        // Botão de menu mobile
         document.getElementById('mobile-menu-btn').addEventListener('click', function() {
             const nav = document.getElementById('main-nav');
             nav.classList.toggle('active');
         });
 
-        // atualização dinâmica do ano no footer
+        // Atualização dinâmica do ano no footer
         document.querySelector('.copyright p').innerHTML = `&copy; ${new Date().getFullYear()} LRF - Advocacia e Consultoria - Todos os direitos reservados`;
 
-        // efeito de fade-in nas seções
+        // Efeito de fade-in nas seções
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
