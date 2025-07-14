@@ -122,38 +122,52 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            text-decoration: none;
         }
 
         .logo-icon {
-            background: var(--secondary);
-            color: var(--primary);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
-            font-size: 1.5rem;
-            font-weight: bold;
+            align-items: center;
+            width: 60px;
+            height: 60px;
+            background: var(--secondary);
+            border-radius: 50%;
+            padding: 5px;
             box-shadow: 0 0 15px rgba(201, 161, 69, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-initials {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+            letter-spacing: -1px;
+            z-index: 2;
         }
 
         .logo-text {
             display: flex;
             flex-direction: column;
+            line-height: 1.1;
         }
 
         .logo-text h1 {
             color: var(--light);
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 700;
-            line-height: 1.2;
+            letter-spacing: 1px;
         }
 
         .logo-text span {
             color: var(--secondary);
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
         }
 
         nav ul {
@@ -690,6 +704,14 @@
             .contact-info {
                 gap: 20px;
             }
+            
+            .logo-text h1 {
+                font-size: 1.4rem;
+            }
+            
+            .logo-initials {
+                font-size: 1.6rem;
+            }
         }
 
         @media (max-width: 576px) {
@@ -709,11 +731,11 @@
             }
             
             .logo-text h1 {
-                font-size: 1.3rem;
+                font-size: 1.2rem;
             }
             
             .logo-text span {
-                font-size: 0.8rem;
+                font-size: 0.7rem;
             }
             
             .hero-content h1 {
@@ -739,6 +761,15 @@
             .service-content h3 {
                 font-size: 1.3rem;
             }
+            
+            .logo {
+                gap: 8px;
+            }
+            
+            .logo-icon {
+                width: 50px;
+                height: 50px;
+            }
         }
     </style>
 </head>
@@ -746,13 +777,15 @@
     <!-- Header -->
     <header>
         <div class="container header-container">
-            <div class="logo">
-                <div class="logo-icon">LRF</div>
-                <div class="logo-text">
-                    <h1>Advocacia</h1>
-                    <span>e consultoria</span>
+            <a href="#home" class="logo">
+                <div class="logo-icon">
+                    <div class="logo-initials">LRF</div>
                 </div>
-            </div>
+                <div class="logo-text">
+                    <h1>LRF ADVOCACIA</h1>
+                    <span>E CONSULTORIA</span>
+                </div>
+            </a>
             
             <nav id="main-nav">
                 <ul>
@@ -939,10 +972,18 @@
                         <i class="fab fa-whatsapp"></i>
                     </div>
                     <h3>Whatsapp</h3>
-                    <p>Atendimento 9:30 ás 16:30 </p>
-                    <p> De segunda a sexta.</p>
+                    <h2>Entre em Contato</h2>
                     <a href="https://wa.me/553182373540">(31) 98237-3540</a>
+                   
                 </div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>Telefone fixo</h3>
+                    <a href="tel:+553136468715">(31) 3646-8715</a>
+</div>
                 
                 <div class="contact-item">
                     <div class="contact-icon">
